@@ -5,9 +5,6 @@
 
 (add-to-list 'load-path "~/.elisp/")
 
-(setenv "PATH"
-	"/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin")
-
 ;; make X/nb frames look ok
 (add-to-list 'default-frame-alist '(background-color . "Black"))
 (add-to-list 'default-frame-alist '(foreground-color . "White"))
