@@ -45,7 +45,7 @@
 (require 'ido)
 (ido-mode t)
 
-;; git support
+;; git support, i wonder if this works
 (require 'vc-git)
 (add-to-list 'vc-handled-backends 'Git)
 
