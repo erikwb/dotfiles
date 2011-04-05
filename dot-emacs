@@ -55,6 +55,12 @@
              (setq py-indent-offset 2
                    indent-tabs-mode nil)))
 
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+(add-hook 'yaml-mode-hook
+	  '(lambda ()
+	     (local-set-key (kbd "RET") 'newline-and-indent)))
+
 ;; code completion and embedded interpreter
 (require 'ipython)
 (require 'anything)
