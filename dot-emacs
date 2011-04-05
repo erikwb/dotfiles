@@ -1,0 +1,69 @@
+;; ebourget's resurrected dot-emacs file
+;; i am so sad that i lost my last one
+
+(add-to-list 'default-frame-alist '(background-color . "Black"))
+(add-to-list 'default-frame-alist '(foreground-color . "White"))
+(blink-cursor-mode -1)
+(add-to-list 'load-path "~/.elisp/")
+(setq scroll-step 1
+      scroll-conservatively 1000000
+      kill-whole-line t
+      transient-mark-mode t
+      require-final-newline t
+      c-basic-indent 2
+      tab-width 2
+      indent-tabs-mode nil
+      )
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(global-font-lock-mode t)
+(column-number-mode t)
+(show-paren-mode t)
+;;(iswitchb-mode t)
+(transient-mark-mode t)
+(defalias 'yes-or-no-p 'y-or-n-p)
+ (defun kill-current-buffer ()
+   "Kill current buffer."
+   (interactive)
+   (kill-buffer (current-buffer)))
+(global-set-key (kbd "C-c g") 'goto-line)
+(global-set-key (kbd "C-c c") 'comment-region)
+(global-set-key (kbd "C-c u") 'uncomment-region)
+(global-set-key (kbd "C-x k") 'kill-current-buffer)
+(require 'tramp)
+
+;; ido is cool
+(require 'ido)
+
+
+;; python-mode is cool
+(require 'python-mode)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+(add-hook 'python-mode-hook
+          '(lambda ()
+             (setq py-indent-offset 2
+                   indent-tabs-mode nil)))
+
+;; code completion and embedded interpreter
+(require 'ipython)
+(require 'anything)
+(require 'anything-ipython)
+(when (require 'anything-show-completion nil t)
+   (use-anything-show-completion 'anything-ipython-complete
+                                 '(length initial-pattern)))
+
+(require 'python-pylint)
+(autoload 'pylookup-lookup "pylookup")
+(autoload 'pylookup-update "pylookup")
+(setq pylookup-program "~/.elisp/pylookup/pylookup.py")
+(setq pylookup-db-file "~/.elisp/pylookup/pylookup.db")
+(global-set-key "\C-ch" 'pylookup-lookup)
+
+;; interpreter keys
+(require 'comint)
+(define-key comint-mode-map (kbd "M-") 'comint-next-input)
+(define-key comint-mode-map (kbd "M-") 'comint-previous-input)
+(define-key comint-mode-map [down] 'comint-next-matching-input-from-input)
+(define-key comint-mode-map [up]
+  'comint-previous-matching-input-from-input)
