@@ -36,6 +36,7 @@
 (global-set-key (kbd "C-c c") 'comment-region)
 (global-set-key (kbd "C-c u") 'uncomment-region)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
+(global-set-key (kbd "C-c r") 'query-replace)
 
 
 
