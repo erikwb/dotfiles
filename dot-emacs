@@ -37,6 +37,14 @@
 (global-set-key (kbd "C-c u") 'uncomment-region)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 
+
+
+
+(if (eq window-system 'x)
+    (progn (menu-bar-mode -1)
+	   (tool-bar-mode -1)
+	   (scroll-bar-mode -1)))
+
 ;; ido is cool
 (require 'tramp)
 (require 'ido)
