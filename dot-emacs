@@ -36,7 +36,11 @@
 (global-set-key (kbd "C-c c") 'comment-region)
 (global-set-key (kbd "C-c u") 'uncomment-region)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
-(global-set-key (kbd "C-c r") 'query-replace)
+
+(if (eq window-system 'x)
+    (progn (menu-bar-mode -1)
+	   (tool-bar-mode -1)
+	   (scroll-bar-mode -1)))
 
 
 
@@ -52,8 +56,8 @@
 (ido-mode t)
 
 ;; git support, i wonder if this works
-(require 'vc-git)
-(add-to-list 'vc-handled-backends 'Git)
+;(require 'vc-git)
+;(add-to-list 'vc-handled-backends 'Git)
 
 ;; python-mode is cool
 (require 'python-mode)
