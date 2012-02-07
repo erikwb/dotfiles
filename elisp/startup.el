@@ -136,7 +136,7 @@
  '(auto-save-directory "~/.backups")
  '(auto-save-directory-fallback "~/.backups")
 ; '(cperl-electric-keywords t)
- '(cperl-hairy t)
+; '(cperl-hairy t)
  '(cperl-indent-level 4)
  '(cperl-auto-newline t)
  '(cperl-invalid-face (quote default))
