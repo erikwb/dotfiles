@@ -4,16 +4,30 @@
 
 (setq load-path (append
                  '("~/.elisp")
+                 '("~/.elisp/cedet-1.0.1")
+                 '("~/.elisp/ecb-2.40")
                  load-path))
+
 ;;(require 'whitespace)
 (require 'show-temp-buffer "~/.elisp/show-temp-buffer.el")
 (require 'build-tags "~/.elisp/build-tags.el")
 (require 'ctypes "~/.elisp/ctypes.el")
 (require 'smart-compile "~/.elisp/smart-compile.el")
-;(require 'ido "~/.elisp/ido.el")
 (require 'browse-kill-ring "~/.elisp/browse-kill-ring.el")
 (require 'cc-mode)
 (require 'nyan-mode "~/.elisp/nyan-mode.el")
+
+(require 'cedet)
+
+(require 'semantic/analyze)
+(provide 'semantic-analyze)
+(provide 'semantic-ctxt)
+(provide 'semanticdb)
+(provide 'semanticdb-find)
+(provide 'semanticdb-mode)
+(provide 'semantic-load)
+
+(require 'ecb)
 
 ; skeletons
 (load "skeletons")
@@ -25,7 +39,7 @@
 ;(desktop-load-default)
 ;(desktop-read)
 
-(setq nyan-wavy-trail t)
+(setq nyan-wavy-trail t) ;; NYAN CAT
 
 ; non-special keybinds
 (global-set-key "\M-z" 'repeat)
@@ -51,9 +65,9 @@
 
 ; functions defined in this file
 (global-set-key "\C-c'" 'comment-current-line-or-region)
-(global-set-key "\C-cr" 'comment-region)
+(global-set-key "\C-cr" 'replace-regexp)
 (global-set-key "\C-c," 'uncomment-current-line-or-region)
-(global-set-key "\C-cg" 'insert-gpl-v2)
+(global-set-key "\C-cg" 'goto-line)
 (global-set-key [M-right] 'forward-buffer)
 (global-set-key [f9] 'save-and-compile)
 (global-set-key "\C-c\C-c" 'save-and-compile)
@@ -65,7 +79,7 @@
 (global-font-lock-mode 1)
 (auto-insert-mode 1)
 (show-paren-mode)
-
+(global-linum-mode 1)
 ; interactive do
 ; (ido-mode t)
 ; but I like iswitchb-buffer better
@@ -152,6 +166,7 @@
  '(sgml-auto-insert-required-elements t)
  '(sgml-normalize-trims t)
  '(tramp-default-method "scp")
+ '(ecb-options-version "2.40")
  ; make emacs automate stuff i do anyway
  '(c-cleanup-list
    (list 'scope-operator 
@@ -204,7 +219,8 @@
       (tool-bar-mode -1) ; kill toolbar
       (scroll-bar-mode -1) ; kill scrollbar
       (blink-cursor-mode -1) ; blinking sucks
-;      (set-face-font 'default
+      (set-face-attribute 'default nil :family "Menlo" :height 145 :weight 'normal)
+      ;(set-face-font 'default
 ;"-*-lucidatypewriter-medium-*-*-*-12-*-*-*-*-*-*-*")
 ;"-dec-terminal-medium-r-normal-*-*-140-*-*-c-*-iso8859-1"
 ;"nh10"
