@@ -1,6 +1,6 @@
 ;; erik bourget
 ;; startup.el
-;; Use me with GNU Emacs 21!
+;; Use me with GNU Emacs 22!
 
 (setq load-path (append
                  '("~/.elisp")
@@ -17,29 +17,8 @@
 (require 'cc-mode)
 (require 'nyan-mode "~/.elisp/nyan-mode.el")
 
-(require 'cedet)
-
-(require 'semantic/analyze)
-(provide 'semantic-analyze)
-(provide 'semantic-ctxt)
-(provide 'semanticdb)
-(provide 'semanticdb-find)
-(provide 'semanticdb-mode)
-(provide 'semantic-load)
-
-(require 'ecb)
-
 ; skeletons
 (load "skeletons")
-;;(autoload 'matlab-mode "matlab" "Enter MATLAB mode." t)
-;;(setq auto-mode-alist (cons '("\\.m\\'" . matlab-mode) auto-mode-alist))
-;;(autoload 'matlab-shell "matlab -nodisplay" "Interactive MATLAB mode." t)
-;; persistent desktop - i don't like this so much lately
-;(load "desktop")
-;(desktop-load-default)
-;(desktop-read)
-
-(setq nyan-wavy-trail t) ;; NYAN CAT
 
 ; non-special keybinds
 (global-set-key "\M-z" 'repeat)
@@ -79,7 +58,6 @@
 (global-font-lock-mode 1)
 (auto-insert-mode 1)
 (show-paren-mode)
-(global-linum-mode 1)
 ; interactive do
 ; (ido-mode t)
 ; but I like iswitchb-buffer better
@@ -214,8 +192,21 @@
 (if (and (>= emacs-major-version 21)
          (not (eq window-system nil)))
     (progn
+      (global-linum-mode 1)
+      (require 'cedet)
+      (require 'semantic/analyze)
+      (provide 'semantic-analyze)
+      (provide 'semantic-ctxt)
+      (provide 'semanticdb)
+      (provide 'semanticdb-find)
+      (provide 'semanticdb-mode)
+      (provide 'semantic-load)
+      (require 'ecb)
+
+      (setq nyan-wavy-trail t) ;; NYAN CAT
       (nyan-mode)
       (nyan-start-animation)
+
       (tool-bar-mode -1) ; kill toolbar
       (scroll-bar-mode -1) ; kill scrollbar
       (blink-cursor-mode -1) ; blinking sucks
