@@ -182,6 +182,7 @@
 (autoload 'cperl-mode "cperl-mode" "" t)
 (autoload 'python-mode "python-mode" "" t)
 (autoload 'pov-mode "pov-mode" "" t)
+(autoload 'go-mode "go-mode" "" t)
 
 ; stupid mouse
 (mouse-avoidance-mode 'jump)
