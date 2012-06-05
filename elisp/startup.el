@@ -70,7 +70,7 @@
 (auto-compression-mode 1)
 
 ; minibuffer autocomplete
-(icomplete-mode 1)
+(icomplete-mode 1)m
 (iswitchb-mode 1)
 
 ; minibuffer resize
@@ -173,6 +173,7 @@
 ; CPerl rules
 (add-to-list 'auto-mode-alist '("\\.pov$" . pov-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . pov-mode))
+(add-to-list 'auto-mode-alist '("\\.go$" . go-mode))
 (add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
