@@ -70,7 +70,7 @@
 (auto-compression-mode 1)
 
 ; minibuffer autocomplete
-(icomplete-mode 1)m
+(icomplete-mode 1)
 (iswitchb-mode 1)
 
 ; minibuffer resize
