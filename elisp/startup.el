@@ -172,6 +172,7 @@
 (add-hook 'write-file-hooks 'time-stamp)
 
 ; CPerl rules
+(add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.pov$" . pov-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . pov-mode))
 (add-to-list 'auto-mode-alist '("\\.go$" . go-mode))
