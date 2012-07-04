@@ -15,7 +15,7 @@
 (require 'smart-compile "~/.elisp/smart-compile.el")
 (require 'browse-kill-ring "~/.elisp/browse-kill-ring.el")
 (require 'cc-mode)
-(require 'yaml-mode)
+(require 'yaml-mode "~/.elisp/yaml-mode.el")
 (require 'nyan-mode "~/.elisp/nyan-mode.el")
 
 ; skeletons
