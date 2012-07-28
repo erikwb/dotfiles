@@ -16,7 +16,6 @@
 (require 'browse-kill-ring "~/.elisp/browse-kill-ring.el")
 (require 'cc-mode)
 (require 'yaml-mode "~/.elisp/yaml-mode.el")
-(require 'nyan-mode "~/.elisp/nyan-mode.el")
 
 ; skeletons
 (load "skeletons")
@@ -197,6 +196,7 @@
          (not (eq window-system nil)))
     (progn
       (global-linum-mode 1)
+      (require 'nyan-mode "~/.elisp/nyan-mode.el")
       (require 'cedet)
       (require 'semantic/analyze)
       (provide 'semantic-analyze)
