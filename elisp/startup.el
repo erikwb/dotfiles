@@ -77,8 +77,8 @@
 ;(resize-minibuffer-mode 1)
 
 ; ghetto-vision
-(set-background-color "black")
-(set-foreground-color "light gray")
+(set-background-color "#111")
+(set-foreground-color "#eee")
 (transient-mark-mode 1)
 
 ; fonts
@@ -87,8 +87,8 @@
                                     :background "lightblue"
                                     :foreground "darkblue")))))
 (setq initial-frame-alist
-      `((background-color . "black")
-	(foreground-color . "light gray")
+      `((background-color . "#111")
+	(foreground-color . "#ccc")
 	(horizontal-scroll-bars . nil)
 	(vertical-scroll-bars . nil)))
 (setq default-frame-alist (copy-alist initial-frame-alist))
@@ -108,7 +108,7 @@
  '(debian-changelog-full-name "Erik Bourget")
  '(debian-changelog-mailing-address "ebourg@cs.mcgill.ca")
  '(fill-column 80)
- '(scroll-conservatively 1000)
+ '(scroll-conservatively 100000)
  ; stealth font locking: 1 second instead of 3
  '(jit-lock-stealth-time 1)
  '(frame-title-format "%b - emacs")
@@ -176,6 +176,8 @@
 (add-to-list 'auto-mode-alist '("\\.inc$" . pov-mode))
 (add-to-list 'auto-mode-alist '("\\.go$" . go-mode))
 (add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
 (add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
@@ -215,10 +217,6 @@
       (scroll-bar-mode -1) ; kill scrollbar
       (blink-cursor-mode -1) ; blinking sucks
       (set-face-attribute 'default nil :family "Menlo" :height 145 :weight 'normal)
-      ;(set-face-font 'default
-;"-*-lucidatypewriter-medium-*-*-*-12-*-*-*-*-*-*-*")
-;"-dec-terminal-medium-r-normal-*-*-140-*-*-c-*-iso8859-1"
-;"nh10"
       ))
 
 ; make all yes/no prompts y/n instead
