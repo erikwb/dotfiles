@@ -1,21 +1,25 @@
 ;; erik bourget
 ;; startup.el
-;; Use me with GNU Emacs 22!
 
 (setq load-path (append
                  '("~/.elisp")
-                 '("~/.elisp/cedet-1.0.1")
-                 '("~/.elisp/ecb-2.40")
                  load-path))
 
-;;(require 'whitespace)
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (setq package-archives
+        `(("gnu" . "https://elpa.gnu.org/packages/")
+          ("melpa" . "http://melpa.org/packages/")))
+  (package-initialize))
+
 (require 'show-temp-buffer "~/.elisp/show-temp-buffer.el")
-(require 'build-tags "~/.elisp/build-tags.el")
-(require 'ctypes "~/.elisp/ctypes.el")
+;(require 'build-tags "~/.elisp/build-tags.el")
+;(require 'ctypes "~/.elisp/ctypes.el")
 (require 'smart-compile "~/.elisp/smart-compile.el")
 (require 'browse-kill-ring "~/.elisp/browse-kill-ring.el")
 (require 'cc-mode)
-(require 'yaml-mode "~/.elisp/yaml-mode.el")
+;(require 'yaml-mode "~/.elisp/yaml-mode.el")
+
 
 ; skeletons
 (load "skeletons")
@@ -58,27 +62,17 @@
 (global-font-lock-mode 1)
 (auto-insert-mode 1)
 (show-paren-mode)
-; interactive do
-; (ido-mode t)
-; but I like iswitchb-buffer better
-(global-set-key "\C-xb" 'iswitchb-buffer)
-; and kill-current-buffer
+(ido-mode t)
 (global-set-key "\C-xk" 'context-kill-buffer)
-;(global-set-key "\C-xk" 'kill-current-buffer)
 
 ; automatically read gzip'd files
 (auto-compression-mode 1)
 
 ; minibuffer autocomplete
 (icomplete-mode 1)
-(iswitchb-mode 1)
 
-; minibuffer resize
-;(resize-minibuffer-mode 1)
-
-; ghetto-vision
-(set-background-color "#111")
-(set-foreground-color "#eee")
+(set-background-color "#000")
+(set-foreground-color "#fff")
 (transient-mark-mode 1)
 
 ; fonts
@@ -88,9 +82,9 @@
                                     :foreground "darkblue")))))
 (setq initial-frame-alist
       `((background-color . "#111")
-	(foreground-color . "#ccc")
-	(horizontal-scroll-bars . nil)
-	(vertical-scroll-bars . nil)))
+        (foreground-color . "#ccc")
+        (horizontal-scroll-bars . nil)
+        (vertical-scroll-bars . nil)))
 (setq default-frame-alist (copy-alist initial-frame-alist))
 
 ; army of setq
@@ -106,10 +100,9 @@
  '(mouse-yank-at-point t)
  '(c-default-style "k&r")
  '(debian-changelog-full-name "Erik Bourget")
- '(debian-changelog-mailing-address "ebourg@cs.mcgill.ca")
+ '(debian-changelog-mailing-address "ebourget@gmail.com")
  '(fill-column 80)
  '(scroll-conservatively 100000)
- ; stealth font locking: 1 second instead of 3
  '(jit-lock-stealth-time 1)
  '(frame-title-format "%b - emacs")
  '(indent-tabs-mode nil)
@@ -127,8 +120,6 @@
  '(version-control t)
  '(auto-save-directory "~/.backups")
  '(auto-save-directory-fallback "~/.backups")
-; '(cperl-electric-keywords t)
-; '(cperl-hairy t)
  '(cperl-indent-level 4)
  '(cperl-auto-newline t)
  '(cperl-invalid-face (quote default))
@@ -136,16 +127,10 @@
  '(semantic-load-turn-everything-on t)
  '(compilation-window-height 8)
  '(c-basic-offset 4)
-;; this gets annoying especially over tramp
-; '(whitespace-auto-cleanup t)
-; '(whitespace-global-mode 1)
-; '(cursor-in-non-selected-windows nil)
  '(sgml-balanced-tag-edit t)
  '(sgml-auto-insert-required-elements t)
  '(sgml-normalize-trims t)
  '(tramp-default-method "scp")
- '(ecb-options-version "2.40")
- ; make emacs automate stuff i do anyway
  '(c-cleanup-list
    (list 'scope-operator 
          'brace-else-brace
@@ -197,9 +182,7 @@
 (if (and (>= emacs-major-version 21)
          (not (eq window-system nil)))
     (progn
-      (global-linum-mode 1)
-      (require 'nyan-mode "~/.elisp/nyan-mode.el")
-      (require 'cedet)
+;      (global-linum-mode 1)
       (require 'semantic/analyze)
       (provide 'semantic-analyze)
       (provide 'semantic-ctxt)
@@ -207,16 +190,12 @@
       (provide 'semanticdb-find)
       (provide 'semanticdb-mode)
       (provide 'semantic-load)
-      (require 'ecb)
-
-      (setq nyan-wavy-trail t) ;; NYAN CAT
-      (nyan-mode)
-      (nyan-start-animation)
 
       (tool-bar-mode -1) ; kill toolbar
       (scroll-bar-mode -1) ; kill scrollbar
       (blink-cursor-mode -1) ; blinking sucks
-      (set-face-attribute 'default nil :family "Menlo" :height 145 :weight 'normal)
+;      (set-face-attribute 'default nil :family "Menlo" :height 145 :weight 'normal)
+      (set-face-attribute 'default nil :family "Monospace" :height 200 :weight 'normal)
       ))
 
 ; make all yes/no prompts y/n instead
@@ -246,8 +225,8 @@
           (lambda () (local-set-key "\C-cH" 'hs-hide-all)))
 
 ; cc-mode behavior
-(ctypes-auto-parse-mode 1) ; this rules - automatically spider and find 
-                           ; typedefs to highlight
+;(ctypes-auto-parse-mode 1) ; this rules - automatically spider and find 
+                                        ; typedefs to highlight
 (add-hook 'c-mode-common-hook
           (lambda () (progn
                        (local-set-key "\C-m" 'newline-and-indent)
