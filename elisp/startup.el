@@ -195,7 +195,7 @@
       (scroll-bar-mode -1) ; kill scrollbar
       (blink-cursor-mode -1) ; blinking sucks
 ;      (set-face-attribute 'default nil :family "Menlo" :height 145 :weight 'normal)
-      (set-face-attribute 'default nil :family "Monospace" :height 200 :weight 'normal)
+      (set-face-attribute 'default nil :family "Monospace" :height 130 :weight 'normal)
       ))
 
 ; make all yes/no prompts y/n instead
