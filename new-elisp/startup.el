@@ -3,14 +3,8 @@
 
 (add-to-list 'load-path "~/.elisp")
 
-(require 'smart-compile)
-(require 'browse-kill-ring)
 (require 'cc-mode)
-(require 'yaml-mode)
-(require 'inf-ruby)
 (require 'python)
-(require 'nyan-mode)
-(require 'go-mode)
 
 (global-set-key "\C-x\C-b" 'bs-show)
 (global-set-key "\C-cs" '(lambda () (interactive) (ansi-term "/bin/bash")))
@@ -27,9 +21,8 @@
 (global-set-key "\C-c," 'uncomment-current-line-or-region)
 (global-set-key "\C-cg" 'goto-line)
 (global-set-key [M-right] 'forward-buffer)
-(global-set-key "\C-c\C-c" 'save-and-compile)
 (global-set-key "\C-cd" 'diff-buffer-with-associated-file)
-(global-set-key "\C-xb" 'iswitchb-buffer)
+;(global-set-key "\C-xb" 'iswitchb-buffer)
 (global-set-key "\C-xk" 'context-kill-buffer)
 
 (global-font-lock-mode 1) ; font coloring
@@ -37,7 +30,6 @@
 (show-paren-mode)
 (auto-compression-mode 1) ; automatically read gzip'd files
 (icomplete-mode 1) ; autocomplete in minibuffer
-(iswitchb-mode 1) ; and for switching buffers
 (transient-mark-mode 1) ; highlight selected regions
 (display-time)
 (menu-bar-mode -1)
@@ -119,25 +111,14 @@
     (progn
       (global-linum-mode 1)
 
-      ; nyancat progress bar!
-      (setq nyan-wavy-trail t)
-      (nyan-mode)
-      (nyan-start-animation)
-
       (tool-bar-mode -1) ; kill toolbar
       (scroll-bar-mode -1) ; kill scrollbar
       (blink-cursor-mode -1) ; blinking sucks
-      (set-face-attribute 'default nil 
-                          :family "Menlo" 
-                          :height 145 
-                          :weight 'normal)
+ ;     (set-face-attribute 'default nil 
+ ;                         :family "Menlo" 
+ ;                         :height 145 
+ ;                        :weight 'normal)
       ))
-
-(defun save-and-compile ()
-  "Save current buffer and make."
-  (interactive "")
-  (save-some-buffers 0)
-  (smart-compile))
 
 ; hide-show mode - code folding
 (add-hook 'hs-minor-mode-hook
