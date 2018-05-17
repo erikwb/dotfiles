@@ -100,7 +100,6 @@
  '(mouse-yank-at-point t)
  '(c-default-style "k&r")
  '(debian-changelog-full-name "Erik Bourget")
- '(debian-changelog-mailing-address "ebourget@gmail.com")
  '(fill-column 80)
  '(scroll-conservatively 100000)
  '(jit-lock-stealth-time 1)
